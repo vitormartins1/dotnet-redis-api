@@ -18,7 +18,7 @@ public class DiscountRepository : IDiscountRepository
         NpgsqlConnection connection = GetConnectionPostgreSql();
 
         Coupon? coupon = await connection.QueryFirstOrDefaultAsync<Coupon>
-            ("SELECT * FROM Coupon WHERE ProductName = @ProducName",
+            ("SELECT * FROM Coupon WHERE ProductName=@ProductName",
             new { ProductName = productName });
 
         if (coupon is null)

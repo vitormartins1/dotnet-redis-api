@@ -6,21 +6,28 @@ services:
     build:
       context: .
       dockerfile: Basket.Api/Dockerfile
-
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
       context: .
       dockerfile: Catalog.Api/Dockerfile
-
+  discount.api:
+    image: ${DOCKER_REGISTRY-}discountapi
+    build:
+      context: .
+      dockerfile: Discount.Api/Dockerfile
   basket.db:
     image: redis:alpine
     ports:
       - "6379:6379"
-
   catalog.db:
     image: mongo:latest
-    
+  discount.db:
+    image: postgres
+  pgadmin:
+    image: dpage/pgadmin4
 volumes:
   mongo_data:
     driver: local  
+  postgres_data:
+  pgadmin_data:
