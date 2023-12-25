@@ -13,14 +13,14 @@ services:
       context: .
       dockerfile: Catalog.Api/Dockerfile
 
-  redis.db:
+  basket.db:
     image: redis:alpine
     ports:
       - "6379:6379"
 
-  catalogdb:
+  catalog.db:
     image: mongo:latest
     
 volumes:
-  mongodb_data:
+  mongo_data:
     driver: local  
